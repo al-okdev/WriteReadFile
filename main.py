@@ -44,14 +44,15 @@ def get_shop_list_by_dishes(dishes, person_count):
 
     for item_dishes in dishes:
         if cook_book[item_dishes]:
+            count_dishe = dishes.count(item_dishes)
             for item in cook_book[item_dishes]:
                 temp_dict = {}
                 temp_dict['measure'] = item['measure']
-                temp_dict['quantity'] = int(item['quantity']) * person_count
+                temp_dict['quantity'] = int(item['quantity']) * person_count * count_dishe
                 result_dict[item['ingredient_name']] = temp_dict
 
     return result_dict
 
 
 
-pprint(get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 4))
+pprint(get_shop_list_by_dishes(['Запеченный картофель', 'Омлет', 'Омлет'], 1))
